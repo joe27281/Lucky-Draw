@@ -1,40 +1,15 @@
-import random
-import ctypes
-import time
-
-ctypes.windll.kernel32.SetConsoleTitleA("Lucky Draw")
+import random, time
 
 rounds = 1
+
+def space():
+	print("")
 
 def line(size):
 	if size == "big":
 		print("-------------------------")
-		if rounds == 1:
-			print("First Round Starting!")
-			time.sleep(1)
-			print("")
-		else:
-			print("New Round Starting!")
-			print("")
-	elif size == "small":
-		print("-------------")
-		if rounds == 1:
-			print("First Round Starting!")
-			time.sleep(1)
-			print("")
-		else:
-			print("New Round Starting!")
-			print("")
-
-#debug = str(input("Would you like to put DEBUG mode on? [yes/no]: ")).upper()
-#if debug == "YES":
-#	debug = 1
-#	print("yes")
-#else:
-#	debug = 0
-
-def space():
-	print("")
+		print("New Round Starting!")
+		space()
 
 print("The goal of the game is to guess the correct number 7 times consecutively.")
 print("Every round you get wrong sets you back to round 1.")
@@ -46,7 +21,6 @@ while True:
 		break
 	else:
 		continue
-
 
 while True:
 	c1 = (random.randint(1, 10000))
@@ -68,7 +42,7 @@ while True:
 	space()
 	guess = int(input("What is your guess of number? "))
 	if guess != ans:
-		print("")
+		space()
 		print("Incorrect. The correct answer was", ans)
 		time.sleep(1)
 		line("big")
@@ -83,25 +57,6 @@ while True:
 			break
 		else:
 			continue
-#	else:
-#		print(ans, "ANSWER (DEBUG)")
-#		guess = int(input("What is your guess of number? "))
-#		if guess != ans:
-#			print("")
-#			print("Incorrect. Answer was", ans)
-#			time.sleep(1)
-#			line("big")
-#			rounds = 1
-#			continue
-#		else:
-#			print("Correct!")
-#			time.sleep(1)
-#			line("big")
-#			rounds += 1
-#			if rounds == 8:
-#				break
-#			else:
-#				continue
 
 print("You have beaten the lucky draw!")
 close = input("Press 'Enter' to close the game.")
